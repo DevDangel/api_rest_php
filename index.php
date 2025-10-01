@@ -49,7 +49,7 @@ $footer = "Derechos reservados Programador: Angel Herrera ©2025";
                 <h5>La siguiente pelicula es: <?= $response["following_production"]["title"]; ?></h5>
             </div>
             <footer>
-                <p> <?=  $footer ?> </p>
+                <p class="footer"> <?=  $footer ?> </p>
             </footer>
         </section>
     </main>
