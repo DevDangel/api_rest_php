@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     color: white !important;
 }
-p {
+.group-p {
     color: #ffff;
     background: linear-gradient(to left, #f0f0,#246c15,#246c15,#246c15,#f0f0);
     width: 100%;
@@ -42,42 +42,95 @@ section{
     flex-direction: column;
     align-items: center;
 }
+.movie h2{
+    text-decoration: underline;
+}
 .title h2{
     margin: 0 auto;
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
-.img img{
-    box-shadow: 0 0 50px 10px rgba(255,255,255,0.5);
-    border-radius: 30px;
-    max-width: 100%;
+
+.img-shadow {
+    display: inline-block;
+    border-radius: 20px;
+    box-shadow: 0 0 40px 10px rgba(255,255,255,0.5);
 }
+
+.img {
+    position: relative;
+    overflow: hidden; /* para que el reflejo no se salga */
+    border-radius: 20px;
+}
+
+.img img {
+    display: block;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0) 0%,
+        rgba(255,255,255,0.4) 50%,
+        rgba(255,255,255,0) 100%
+    );
+    transform: skewX(-20deg);
+    animation: reflejo 5s infinite;
+    pointer-events: none;
+    z-index: 2;
+    border-radius: 20px;
+}
+
+@keyframes reflejo {
+    0%, 60% {
+        left: -100%;
+        opacity: 0;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
 
 @media (max-width: 450px) {
     .title{
         width: 140%;
     }
+
     .title h2{
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    font-size: 15px;
-}
-.img img{
-    box-shadow: 0 0 50px 10px rgba(255,255,255,0.5);
-    border-radius: 30px;
-    width: 90%;
-    margin-left: 20px;
-}
-.fondo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 120vh;
-    object-fit: cover;   /* cubre toda la pantalla sin deformar */
-    z-index: -1;         /* el contenido va encima */
-}
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        font-size: 18px;
+    }
+    
+    .img img{
+        box-shadow: 0 0 50px 10px rgba(255,255,255,0.5);
+        border-radius: 10px;
+        width: 90%;
+        margin-left: 20px;
+    }
+    
+    .fondo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 120vh;
+        object-fit: cover;   /* cubre toda la pantalla sin deformar */
+        z-index: -1;         /* el contenido va encima */
+    }
 }

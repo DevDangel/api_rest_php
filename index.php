@@ -15,6 +15,7 @@ $response = json_decode($data,true);
 
 //var_dump($response);
 
+$footer = "Derechos reservados Programador: Angel Herrera ©2025";
 
 ?>
 <!DOCTYPE html>
@@ -36,15 +37,20 @@ $response = json_decode($data,true);
             </div>
              <div class="movie">
                 <h2><?= $response["title"] ?></h2>
-                <p>Disponible en <?= $response["days_until"] ?> días</p><br>
-                <p>Fecha de estreno: <?= date("d/m/Y",strtotime($response["release_date"])); ?></p>
+                <p class="group-p">Disponible en <?= $response["days_until"] ?> días</p><br>
+                <p class="group-p">Fecha de estreno: <?= date("d/m/Y",strtotime($response["release_date"])); ?></p>
             </div>
-            <div class="img">
-                <img src="<?= $response["poster_url"];?>" alt="<?= $response["title"] ?>" title="<?= $response["title"] ?>" >
+            <div class="img-shadow">
+                <div class="img">
+                    <img src="<?= $response["poster_url"];?>" alt="<?= $response["title"] ?>" title="<?= $response["title"] ?>" >
+                </div>
             </div>
             <div class="next">
                 <h5>La siguiente pelicula es: <?= $response["following_production"]["title"]; ?></h5>
-            </div>  
+            </div>
+            <footer>
+                <p> <?=  $footer ?> </p>
+            </footer>
         </section>
     </main>
 </body>
