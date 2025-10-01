@@ -1,8 +1,12 @@
-# Usamos PHP 8.3 con Apache
-FROM php:8.3-apache
+# Usamos PHP 8.3 CLI (más ligero y simple)
+FROM php:8.3-cli
 
-# Copiar todos los archivos del proyecto al servidor web dentro del contenedor
-COPY . /var/www/html
+# Copiar todos los archivos al contenedor
+COPY . /app
+WORKDIR /app
 
-# Exponer el puerto 80 (Apache)
-EXPOSE 80
+# Exponer el puerto que Zeabur usa
+EXPOSE 8080
+
+# Iniciar servidor PHP en el puerto correcto
+CMD ["php", "-S", "0.0.0.0:8080", "-t", "."]
